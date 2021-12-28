@@ -2,7 +2,37 @@
 
 This is my custom kernel for Linux Xertz.
 
-============
+Installation
+
+first type
+```
+make
+```
+to prepare the kernel.
+Then grab a cup of coffee and a blanket and type
+```
+make modules_install
+```
+to compile the modules.
+Next copy the kernel to the /boot firectory
+```
+cp -v arch/x86/boot/bzImage /boot/vmLinuz-5.15.11-linux-xertz
+```
+Next makethe initial ram disk
+```
+mkinitcpio -k 5.15.11 -c /etc/mkinitcpio.conf -g /boot/initramfs-5.15.11-linux-xertz.img
+```
+Then, copy System.map
+```
+cp System.map /boot/System.map-5.15.11-linux-xertz
+```
+Finally, update grub.
+```
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+And there you go! now you have my super cool kernel installed on your computer.
+
+
 Linux kernel
 ============
 
